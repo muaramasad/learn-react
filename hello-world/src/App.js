@@ -24,11 +24,9 @@ class App extends Component {
         <h1>{this.state.headerText}</h1>
         <p>{this.state.contentText}</p>
         */}
-        {
           //Stateless Component
           <Header />
           <Content />
-        }
       </div>
     );
   }
@@ -78,10 +76,21 @@ class Content extends Component {
             <th>Age</th>
           </thead>
           <tbody>
-
+            {this.state.data.map((person, i) => <TableRow key={i} data={person} /> )}
           </tbody>
         </table>
         </p>
+    );
+  }
+}
+class TableRow extends Component {
+    render() {
+    return (
+        <tr>
+            <td>{this.props.data.id}</td>
+            <td>{this.props.data.name}</td>
+            <td>{this.props.data.age}</td>
+        </tr>
     );
   }
 }
